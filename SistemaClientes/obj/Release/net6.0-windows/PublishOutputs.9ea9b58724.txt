@@ -1,0 +1,10 @@
+C:\Users\PC\Desktop\INSTALADOR\SistemaClientes.exe
+C:\Users\PC\Desktop\INSTALADOR\SistemaClientes.dll
+C:\Users\PC\Desktop\INSTALADOR\SistemaClientes.deps.json
+C:\Users\PC\Desktop\INSTALADOR\SistemaClientes.runtimeconfig.json
+C:\Users\PC\Desktop\INSTALADOR\SistemaClientes.pdb
+C:\Users\PC\Desktop\INSTALADOR\DocumentFormat.OpenXml.dll
+C:\Users\PC\Desktop\INSTALADOR\Newtonsoft.Json.dll
+C:\Users\PC\Desktop\INSTALADOR\SpreadsheetLight.dll
+C:\Users\PC\Desktop\INSTALADOR\Entidades.dll
+C:\Users\PC\Desktop\INSTALADOR\Entidades.pdb

@@ -81,6 +81,7 @@
             Controls.Add(btnNo);
             Controls.Add(btnSi);
             Name = "FrmCartel";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FrmCartel";
             ResumeLayout(false);
             PerformLayout();

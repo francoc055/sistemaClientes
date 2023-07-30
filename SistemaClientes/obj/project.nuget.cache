@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "PiOOphXSxwcrV7bUlMpB1M9fpT6Z9iu8zBsrAM+h4eS3/cUubEQ3FrtLX3hJUlBCDEV9pDOVfDuqfFJu0QjLOA==",
+  "dgSpecHash": "tHKBTmGyxNGmUilLCfyLfq5Je8efP56q6dWqP1yPYpRy0vYiU94gh7xCk850oS21n3tYpDR/cnT5X3dJoSz5VA==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\Desktop\\sistemaPorzione\\SistemaClientes\\SistemaClientes.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\documentformat.openxml\\2.11.3\\documentformat.openxml.2.11.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\spreadsheetlight\\3.5.0\\spreadsheetlight.3.5.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

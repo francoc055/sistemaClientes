@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace SistemaClientes
 {
-    public delegate void DelegadoAbrirForm();
+    public delegate void DelegadoBtn();
     public partial class FrmClientes : Form
     {
         //List<Cliente> clientes;
         string path;
+        FrmDelivery frmDelivery;
         public FrmClientes()
         {
             InitializeComponent();
@@ -40,7 +41,6 @@ namespace SistemaClientes
         {
             if (HayClientes(Sistema.Clientes))
             {
-                //MessageBox.Show("exito");
                 CargarDataGridClientes();
             }
         }
@@ -66,37 +66,27 @@ namespace SistemaClientes
                 filaCliente.Cells[2].Value = item.Direccion;
                 filaCliente.Cells[3].Value = item.Localidad;
                 filaCliente.Cells[4].Value = item.Telefono;
+                filaCliente.Cells[5].Value = item.LocalidadValor;
 
                 dataGridClientes.Rows.Add(filaCliente);
             }
-            //dataGridClientes.DataSource = GetClientes();
+
             dataGridClientes.ClearSelection();
         }
 
         private async void btnCrear_Click(object sender, EventArgs e)
         {
-            await Task.Run(() => AbrirFormAsync());
-        }
+            Cliente.Flag = false;
+            CRUDCliente crudCliente = new CRUDCliente();
 
-        private void AbrirFormAsync()
-        {
-            if (InvokeRequired)
+            DialogResult result = crudCliente.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                DelegadoAbrirForm delegado = AbrirFormAsync;
-                Invoke(delegado);
-            }
-            else
-            {
-                Cliente.Flag = false;
-                CRUDCliente crudCliente = new CRUDCliente();
-
-                DialogResult result = crudCliente.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    CargarDataGridClientes();
-                }
+                CargarDataGridClientes();
             }
         }
+
+
 
         private void dataGridClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -112,7 +102,7 @@ namespace SistemaClientes
                     {
                         if (item.Id == valorId)
                         {
-                            CRUDCliente crudCliente = new CRUDCliente(item);
+                            CRUDCliente crudCliente = new CRUDCliente(item, frmDelivery);
                             DialogResult result = crudCliente.ShowDialog();
                             if (result == DialogResult.OK)
                             {
@@ -132,106 +122,23 @@ namespace SistemaClientes
 
         private void txtFiltrarPorLocalidad_TextChanged(object sender, EventArgs e)
         {
-            /*string filtro = txtFiltrarPorLocalidad.Text.Trim();
-            
-            foreach (DataGridViewRow fila in dataGridClientes.Rows)
-            {
-                fila.Selected = false;
-                string cadena = "";
 
-                string valor = (string)fila.Cells[3].Value;
-                if (valor is not null)
-                {
-                    if (valor.Length >= filtro.Length)
-                    {
-                        for (int i = 0; i < filtro.Length; i++)
-                        {
-                            cadena += valor[i];
-                            if (filtro[i] == valor[i] && filtro == cadena)
-                            {
-                                fila.Selected = true;
-                                
-                            }
-                            else
-                            {
-                                
-                                //fila.Selected = false;
-                                //CargarDataGridClientes();
-                            }
-                        }
-                        
-                    }  
-                }
-
-                
-            }
-            /*
-            List<int> ids = new List<int>();
-
-            foreach (DataGridViewRow fila in dataGridClientes.Rows)
-            {
-                
-                if(fila.Selected)
-                {
-                    int valorId = (int)fila.Cells[0].Value;
-                    foreach (Cliente item in Sistema.Clientes)
-                    {
-                        if(item.Id == valorId)
-                        {
-                            ids.Add(item.Id);
-                            
-                        }
-                    }
-                }
-            }
-
-            if(ids.Count > 0)
-            {
-                dataGridClientes.Rows.Clear();
-                foreach (Cliente item in Sistema.Clientes)
-                {
-                    foreach (int valor in ids)
-                    {
-                        if(valor == item.Id)
-                        {
-                            DataGridViewRow filaCliente = new DataGridViewRow();
-                            filaCliente.CreateCells(dataGridClientes);
-                            filaCliente.Cells[0].Value = item.Id;
-                            filaCliente.Cells[1].Value = item.NombreYapellido;
-                            filaCliente.Cells[2].Value = item.Direccion;
-                            filaCliente.Cells[3].Value = item.Localidad;
-                            filaCliente.Cells[4].Value = item.Telefono;
-
-                            dataGridClientes.Rows.Add(filaCliente);
-                        }
-                    }
-                    
-
-
-                }
-            }
-            else
-            {
-                CargarDataGridClientes();
-            }*/
-
-            string filtro = txtFiltrarPorLocalidad.Text.Trim();
+            string filtro = txtFiltrarPorLocalidad.Text.Trim().ToLower();
             bool flag = true;
 
             dataGridClientes.Rows.Clear();
             foreach (Cliente item in Sistema.Clientes)
             {
-                if (item.Localidad.Length >= filtro.Length)
+                string cadena = item.Localidad.ToLower();
+                if (cadena.Length >= filtro.Length)
                 {
                     for (int i = 0; i < filtro.Length; i++)
                     {
-                        if (filtro[i] != item.Localidad[i])
+                        if (filtro[i] != cadena[i])
                         {
                             flag = false;
                             break;
                         }
-
-
                     }
                     if (flag == true && filtro.Length > 0)
                     {
@@ -249,7 +156,7 @@ namespace SistemaClientes
 
                     }
                     flag = true;
-                    //CargarDataGridClientes();
+
                 }
             }
             if (string.IsNullOrEmpty(filtro))
@@ -258,5 +165,48 @@ namespace SistemaClientes
             }
 
         }
+
+        private async void btnAbrirDelivery_Click(object sender, EventArgs e)
+        {
+            //await Task.Run(() => AbrirFormAsync());
+            await Task.Run(() =>
+            {
+                DeshabilitarBtnDelivery();
+                frmDelivery = new FrmDelivery();
+                frmDelivery.ShowDialog();
+                if(frmDelivery.DialogResult == DialogResult.OK)
+                {
+                    HabilitarBtnDelivery();
+                }
+            });
+        }
+
+        private void DeshabilitarBtnDelivery()
+        {
+            if (InvokeRequired)
+            {
+                DelegadoBtn delegado = DeshabilitarBtnDelivery;
+                Invoke(delegado);
+            }
+            else
+            {
+                btnAbrirDelivery.Enabled = false;
+            }
+        }
+
+        private void HabilitarBtnDelivery()
+        {
+            if (InvokeRequired)
+            {
+                DelegadoBtn delegado = HabilitarBtnDelivery;
+                Invoke(delegado);
+            }
+            else
+            {
+                btnAbrirDelivery.Enabled = true;
+            }
+        }
+
+
     }
 }

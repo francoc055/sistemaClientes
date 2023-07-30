@@ -20,15 +20,15 @@ namespace Entidades
             //HardcodearClientes();
         }
 
-        static List<Cliente> HardcodearClientes()
-        {
-            Clientes.Add(new Cliente("pepe perez", "calle falsa 123", "temperley", 1123457609));
-            Clientes.Add(new Cliente("franco armani", "calle falsa 564", "lomas", 1145457600));
-            Clientes.Add(new Cliente("paulo diaz", "calle falsa 456", "lanus", 1123450987));
-            Clientes.Add(new Cliente("milton casco", "calle falsa 111", "escalada", 1123456510));
+        //static List<Cliente> HardcodearClientes()
+        //{
+        //    Clientes.Add(new Cliente("pepe perez", "calle falsa 123", "temperley", 1123457609));
+        //    Clientes.Add(new Cliente("franco armani", "calle falsa 564", "lomas", 1145457600));
+        //    Clientes.Add(new Cliente("paulo diaz", "calle falsa 456", "lanus", 1123450987));
+        //    Clientes.Add(new Cliente("milton casco", "calle falsa 111", "escalada", 1123456510));
 
-            return clientes;
-        }
+        //    return clientes;
+        //}
 
         public static void SerializarJson<T>(List<T> lista, string ruta)
         {

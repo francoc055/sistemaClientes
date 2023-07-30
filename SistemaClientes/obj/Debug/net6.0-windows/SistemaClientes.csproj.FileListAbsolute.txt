@@ -24,3 +24,5 @@ C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\obj\Debug\net6.0-windows\ref
 C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\obj\Debug\net6.0-windows\SistemaClientes.CRUDCliente.resources
 C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\obj\Debug\net6.0-windows\SistemaClientes.FrmCartel.resources
 C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\obj\Debug\net6.0-windows\SistemaClientes.Properties.Resources.resources
+C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\PC\Desktop\sistemaPorzione\SistemaClientes\bin\Debug\net6.0-windows\SpreadsheetLight.dll
